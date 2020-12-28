@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>房间信息</title>
+</head>
+<body>
+ <table align="center" border="1" >
+ <tr>
+{% for tmp in orderInfo  %}
+    <td align="center">
+    {% for tmp1 in roomIofo %}
+        房间号：{{ tmp1["roomid"] }}<br>
+    房间类型：{{ tmp1["type"] }}<br>
+        房间价格：{{ tmp1["price"] }}<br>
+        {% endfor %}
+    日期：{{ tmp }}<br>
+    当前状态：{{ orderInfo[tmp] }}<br>
+{% if orderInfo[tmp] == "未预订" %}
+                <a href="{{ url_for("bookroom")}}">点击预定</a>
+            {% else %}
+                <a href="#" onclick="javascript:alert('该日期已经被预定啦')">不可预定</a>
+            {% endif %}
+
+
+
+
+
+    </tr>
+    </td>
+ {% endfor %}
+
+
+
+ </table>
+</body>
+</html>

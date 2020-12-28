@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>房间</title>
+</head>
+<body>
+    {% for tmp in roomsInfo %}
+        <table width="200" border="1" align="center">
+        <td align="center">
+        房间号:{{ tmp["roomid"] }}<br>
+        房间类型：{{ tmp["type"] }}<br>
+       价格：{{ tmp["price"] }} <br>
+        <a href="{{ url_for("getRoomsInfo",roomid = tmp["roomid"]) }}">查看房间信息</a>
+          </td>
+        <br>
+
+        </table>
+
+
+
+    {% endfor %}
+
+</body>
+</html>
