@@ -5,8 +5,30 @@
     <title>成功页面</title>
 </head>
 <body>
+<div align="right">
+    <a href="{{ url_for("logout") }}">退出</a>
+</div>
+<div align="center">
+<b>预定成功，以下为您的订单信息：</b><br><br>
+    <table>
+        <tr>
+            <td colspan="5">
+        <div style="background: bisque">
+            用户名：{{ bookroom_Info.username }}<br>
+            预定时间：{{ bookroom_Info.ordertime }}<br>
+            房间号：{{ bookroom_Info.roomid }}<br>
+            房间类型：{{ bookroom_Info.type }}<br>
+            订单号：{{ bookroom_Info.orderid }}<br>
+        </div>
+            </td>
+        </tr>
+    </table>
 
-预定成功
+</div>
+
+<a href="{{ url_for("myinfo") }}">查看历史预定信息</a><br>
+<a href="{{ url_for("myinfo_ten") }}">查看最近10次订单</a>
+
 
 </body>
 </html>

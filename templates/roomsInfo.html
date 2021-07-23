@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>房间信息</title>
+    <title>房间预订详情</title>
 </head>
 <body>
- <table align="center" border="1" >
- <tr>
-{% for tmp in orderInfo  %}
-    <td align="center">
-    {% for tmp1 in roomIofo %}
-        房间号：{{ tmp1["roomid"] }}<br>
-    房间类型：{{ tmp1["type"] }}<br>
-        房间价格：{{ tmp1["price"] }}<br>
-        {% endfor %}
-    日期：{{ tmp }}<br>
-    当前状态：{{ orderInfo[tmp] }}<br>
-{% if orderInfo[tmp] == "未预订" %}
-                <a href="{{ url_for("bookroom")}}">点击预定</a>
-            {% else %}
-                <a href="#" onclick="javascript:alert('该日期已经被预定啦')">不可预定</a>
+<div align="right">
+    <a href="{{ url_for("logout") }}">退出</a>
+</div>
+    <table align="center" border="1">
+        <tr>
+            <td colspan="5" align="center">
+                <b>房间号：</b>{{ roomsInfo.roomid }}<br>
+                <b>房间类型：</b>{{ roomsInfo.type }}<br>
+                <b>价格：</b>{{ roomsInfo.price }}
+            </td>
+        </tr>
+        {% for tmp in ordersInfo %}
+            {% if loop.index0%5==0 %}
+                <tr>
             {% endif %}
+            <td>
+            日期: {{ tmp }}<br>
+            状态: {{ ordersInfo[tmp] }}<br>
+            {% if ordersInfo[tmp] == "未预订" %}
+                <a href="{{ url_for("bookroom",roomid=roomsInfo.roomid,booktime=tmp)}}">点击预定</a>
+            {% else %}
+                <a href="#" onclick="javascript:alert('该日期已经被预订，您不可预订')">不可预订</a>
+            {% endif %}
+            </td>
 
+            {% if loop.index0%5==4 %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
 
-
-
-
-    </tr>
-    </td>
- {% endfor %}
-
-
-
- </table>
 </body>
 </html>

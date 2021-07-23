@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body align="center" background="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3204449889,2008964833&fm=26&gp=0.jpg" style="background-repeat: no-repeat">
+<div align="right">
+    <a href="{{ url_for("index") }}" style="background: antiquewhite"><b>首页</b></a>
+</div>
+<div><b>{{ message }}</b>
+</div>
+<form action={{ url_for("login") }} method="post" >
+    用户名：<input type="txt" name="username" ><br>
+
+    密码：<input type="password" name="password" ><br>
+    <input type="submit" value="提交登录">
+</form>
+
+
+</body>
+</html>

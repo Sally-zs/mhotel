@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body align="center">
+    <table align="center" border="1">
+        <tr>
+            <td colspan="5" align="center">
+        <b>预定人姓名：</b>{{ username }}<br>
+            </td>
+        </tr>
+{%  for tmp in qu_ten %}
+                {% if loop.index0%5==0 %}
+                <tr>
+            {% endif %}
+            <td>
+        订单号：{{ tmp.orderid }}<br>
+        房间号：{{ tmp.userrooms }}<br>
+        预定时间：{{ tmp.ordertime }}<br>
+        房间类型：{{ tmp.type }}<br>
+        房间价格：{{ tmp.price }}<br><br>
+     </td>
+
+            {% if loop.index0%5==4 %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+
+
+<b>本年度合计花费：</b>{{ count_price }}元<br>
+<b>订房的类型：</b>
+{% for k,v in count_rooms.items() %}
+{{ k }}:{{ v }}次 ;
+{% endfor %}
+
+</body>
+</html>
